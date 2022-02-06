@@ -6,7 +6,6 @@ flask==2.0.2
 gunicorn==20.1.0
 itsdangerous==2.0.1
 jinja2==3.0.2
-libcxx==12.0.0
 libffi==3.3
 markupsafe==2.0.1
 ncurses==6.3
