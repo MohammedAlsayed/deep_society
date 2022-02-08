@@ -19,7 +19,6 @@ def main():
     return jsonify("hello world"), 200
 
 # 127.0.0.1:5000/login?username=Jack
-# https://deepsociety-340502.wn.r.appspot.com/login?username=Jack
 @app.route('/login')
 def login():
     print("DEBUG: chat_dict: "+ str(chat_dict))
@@ -45,7 +44,6 @@ def login():
     return jsonify({"text":welcome_text}), 200
 
 # 127.0.0.1:5000/send?username=Jack&text=That's great! I was hoping you can tell me about Saudi Arabia.
-# https://deepsociety-340502.wn.r.appspot.com/send?username=Jack&text=That's great! I was hoping you can tell me about Saudi Arabia.
 @app.route('/send')
 def send():
     print("DEBUG: chat_dict: "+ str(chat_dict))
@@ -67,7 +65,7 @@ def send():
     chat_idx = len(chat_dict[username]["chat"]) +1
     # add user text to his chat history
     chat_dict[username]["chat"].update({chat_idx:text})
-    openai.api_key = "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"
+    openai.api_key = "YOUR-KEY"
     prompt = ""
     chat = chat_dict[username]["chat"]
     chat_bot_name = chat_dict[username]["bot_name"]
@@ -89,7 +87,6 @@ def send():
     return jsonify({"text":response_text}), 200
 
 # 127.0.0.1:5000/clear?username=Jack
-# https://deepsociety-340502.wn.r.appspot.com/clear?username=Jack
 @app.route('/clear')
 def clear():
     print("DEBUG: chat_dict: "+ str(chat_dict))
@@ -119,4 +116,4 @@ def changeBot():
     return jsonify({"text":"Bot name changed successfully"}), 200
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8080, threaded=False, processes=1)
+    app.run(host='127.0.0.1', port=5000, threaded=False, processes=1)
